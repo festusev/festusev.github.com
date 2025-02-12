@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - AI Safety Research</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            /*margin-bottom: 40px;*/
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .bio {
+            flex: 1;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .papers {
+            margin-top: 40px;
+        }
+
+        .paper {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .paper-image {
+            width: 150px;
+            /*height: 150px;*/
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .paper-content {
+            flex: 1;
+        }
+
+        .paper-title {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .paper-authors {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .paper-abstract {
+            color: #555;
+        }
+
+        .contact {
+            /*margin-top: 40px;*/
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+        }
+        .contact a {
+            flex: 1;
+            text-align:center;
+        }
+
+        .contact a img {
+            height: 1em;
+            margin-right: 10px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="imgs/headshot.jpg" alt="Your Name" class="profile-image">
+        <div class="bio">
+            <h1>Evan Ellis</h1>
+<!--            <p>AI Safety Researcher</p>-->
+            <p>I'm a senior at UC Berkeley in Professor Anca Dragan's lab.
+                I'm currently interested in aligning agents with empowerment, not rewards.
+                Previously, I worked on code generation, active learning, regularizing reward learning, and quantum optics.
+                I've been fortunate to intern at Scale AI, Imbue AI, BAIR, and Salesforce.</p>
+        </div>
+
+    </header>
+
+    <div class="contact">
+        <a href="mailto:evan.ellis@berkeley.edu"><img src="imgs/paper-airplane.svg"/>Email</a>
+        <a href="https://scholar.google.com/citations?user=zZfgIZ4AAAAJ&hl=en"><img src="imgs/telescope.svg"/>Google Scholar</a>
+        <a href="https://x.com/evandavidellis"><img src="imgs/twitter.svg"/>Twitter</a>
+    </div>
+    <section class="papers">
+        <h2>Publications</h2>
+
+        <div class="paper">
+            <img src="imgs/wheelchair-cropped.svg" alt="Paper 1 Visual" class="paper-image">
+            <div class="paper-content">
+                <div class="paper-title">
+                    <a href="https://arxiv.org/pdf/2411.02623?">Learning to assist humans without inferring rewards</a>
+                </div>
+                <div class="paper-authors">Vivek Myers, Evan Ellis, Sergey Levine, Benjamin Eysenbach, Anca Dragan</div>
+<!--                <div class="paper-abstract">-->
+<!--                    Assistive agents should make humans’ lives easier. We build upon prior work that studies-->
+<!--                    assistance through the lens of empowerment: an assistive agent aims to maximize-->
+<!--                    the influence of the human’s actions such that they exert a greater control over the-->
+<!--                    environmental outcomes and can solve tasks in fewer steps. We lift the major limitation of prior work in this area — scalability to high-dimensional settings — with-->
+<!--                    contrastive successor representations. Empirically, our proposed method outperforms-->
+<!--                    prior methods on synthetic benchmarks, and scales to Overcooked, a cooperative-->
+<!--                    game setting. Theoretically, our work connects ideas from information theory,-->
+<!--                    neuroscience, and reinforcement learning, and charts a path for representations to-->
+<!--                    play a critical role in solving assistive problems.-->
+<!--                </div>-->
+            </div>
+        </div>
+
+        <div class="paper">
+            <img src="imgs/posterior_reward_belief.png" alt="Paper 2 Visual" class="paper-image">
+            <div class="paper-content">
+                <div class="paper-title">
+                    <a href="https://arxiv.org/pdf/2403.06003">A Generalized Acquisition Function for Preference-based Reward Learning</a>
+                </div>
+                <div class="paper-authors">Evan Ellis, Gaurav R Ghosal, Stuart J Russell, Anca Dragan, Erdem Bıyık</div>
+<!--                <div class="paper-abstract">-->
+<!--                    Brief abstract or description of the paper goes here. This should give readers a quick understanding of the paper's contributions and findings.-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="paper">
+            <img src="imgs/vqol.png" alt="Paper 2 Visual" class="paper-image">
+            <div class="paper-content">
+                <div class="paper-title">
+                    <a href="https://arxiv.org/pdf/2105.07300">The virtual quantum optics laboratory</a>
+                </div>
+                <div class="paper-authors">Brian R La Cour, Maria Maynard, Parth Shroff, Gabriel Ko, Evan Ellis</div>
+<!--                <div class="paper-abstract">-->
+<!--                    Brief abstract or description of the paper goes here. This should give readers a quick understanding of the paper's contributions and findings.-->
+<!--                </div>-->
+            </div>
+        </div>
+    </section>
+</body>
+</html>
