@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project 2</title>
+</head>
+<body>
+<h1>Part 1</h1>
+<h2>1.1</h2>
+<p>Gradient Magnitude Computation: The gradient magnitude is calculated by first convolving the image with a Dx kernel
+such as [-1, 1] to calculate the derivative along the x axis. Then, convolve the image with a Dy kernel such as [[-1], [1]]
+to calculate the derivative along the y axis. To compute the gradient magnitude at a point (not technically a pixel because
+I am using [-1, 1] instead of [-1, 0, 1] which is the true derivative), add the squares of the Dy value and Dx value at that point, and
+then take the square root of that sum.</p>
+<b>Original Cameraman:</b><br>
+<img src="imgs/cameraman.png"/><br>
+<b>Gradient Magnitude:</b><br>
+<img src="outs/cameraman/gradient_mag.png"/><br>
+<b>Clipped Gradient Magnitude (threshold = 0.2):</b><br>
+<img src="outs/cameraman/clipped_gradient_mag.png"/><br>
+<h2>1.2</h2>
+<p><b>Question 1:</b> This smoothed approach, whereby we first blur the image and then compute the gradient, has far less
+noisy edge detections in it than in the unsmoothed edge detector image. The unsmoothed version picks up a lot of horizontal
+edges in the grass behind the cameraman, whereas the smoothed version ignores those and focuses on the edges of the tripod and the man.</p>
+<p><b>Question 2:</b>Taking the derivative of the gaussian filter, and blurring then taking the derivative, are equivalent and appear equivalent in the image.</p>
+<b>Smoothed Gradient Magnitude:</b><br>
+<img src="outs/cameraman/smoothed_gradient_magnitude.png"/><br>
+<b>Smoothed Clipped Gradient Magnitude (threshold = 0.2):</b><br>
+<img src="outs/cameraman/smoothed_clipped_gradient_magnitude.png"/>
+<h1>Part 2</h1>
+<h3>Unsharp Masking</h3>
+<b>Taj</b>
+<p>Original:</p>
+<img src="imgs/taj.jpg"/>
+<p>Sharpened:</p>
+<img src="outs/unsharp/taj.png"/>
+<b>Ferrel</b>
+<p>Original:</p>
+<img src="imgs/ferrel.jpg"/>
+<p>Sharpened:</p>
+<img src="outs/unsharp/ferrel.png"/>
+<b>Banff</b>
+<p>Original:</p>
+<img src="imgs/banff.png"/>
+<p>Blurred:</p>
+<img src="outs/unsharp/banff_blur.png"/>
+<p>Blurred then Sharpened:</p>
+<img src="outs/unsharp/banff_sharp.png"/>
+
+<h3>Hybrid Images</h3>
+<b>Derek and Nutmeg</b>
+<p>Derek:</p>
+<img src="imgs/DerekPicture.jpg"/>
+<p>Nutmeg:</p>
+<img src="imgs/nutmeg.jpg"/>
+<p>Hybrid:</p>
+<img src="outs/derek_nutmeg/hybrid.jpg"/>
+<p>Derek FFT:</p>
+<img src="outs/derek_nutmeg/im1_fft.jpg"/>
+<p>Nutmeg FFT:</p>
+<img src="outs/derek_nutmeg/im2_fft.jpg"/>
+<p>Derek Filtered FFT:</p>
+<img src="outs/derek_nutmeg/filt_im1_fft.jpg"/>
+<p>Nutmeg Filtered FFT:</p>
+<img src="outs/derek_nutmeg/filt_im2_fft.jpg"/>
+<p>Hybrid FFT:</p>
+<img src="outs/derek_nutmeg/hybrid_fft.jpg"/><br>
+<b>Lion Dog</b><br>
+<p>Lion:</p>
+<img src="imgs/lion.jpg"/>
+<p>Dog:</p>
+<img src="imgs/dog.jpg"/>
+<p>Hybrid:</p>
+<img src="outs/lion_dog/hybrid.jpg"/><br>
+<b>Happy and Mad</b>
+<p>The Happy and Mad hybrid image failed. I suspect it is the images are relatively similar, and we are so trained to recognize
+anger that we easily pick out the mad face from the happy.</p>
+<p>Happy:</p>
+<img src="imgs/happy.jpg"/>
+<p>Mad:</p>
+<img src="imgs/mad.jpg"/>
+<p>Hybrid:</p>
+<img src="outs/happy_mad/hybrid.jpg"/>
+
+<h2>Multi-resolution Blending:</h2>
+<h3>Apple and Orange</h3>
+<b>Originals:</b><br>
+<img src="imgs/apple.jpeg"/>
+<img src="imgs/orange.jpeg"/><br>
+<b>Apple Laplacian Stack at depths 0, 2, 5, and 6</b><br>
+<img src="outs/blending/oraple/a0.png"/><br>
+<img src="outs/blending/oraple/a2.png"/><br>
+<img src="outs/blending/oraple/a5.png"/><br>
+<img src="outs/blending/oraple/a6.png"/><br>
+<b>Orange Laplacian Stack at depths 0, 2, 5, and 6</b><br>
+<img src="outs/blending/oraple/o0.png"/><br>
+<img src="outs/blending/oraple/o2.png"/><br>
+<img src="outs/blending/oraple/o5.png"/><br>
+<img src="outs/blending/oraple/o6.png"/><br>
+<b>Combined Laplacian Stack at depths 0, 2, 5, and 6</b><br>
+<img src="outs/blending/oraple/c1.png"/><br>
+<img src="outs/blending/oraple/c2.png"/><br>
+<img src="outs/blending/oraple/c5.png"/><br>
+<img src="outs/blending/oraple/c6.png"/><br>
+<b>Final Image:</b><br>
+<img src="outs/blending/oraple/oraple.png" width="50%" />
+<h3>Dragon</h3>
+<b>Originals:</b><br>
+<img src="imgs/nyc.jpg" width="50%" />
+<img src="imgs/dragon.jpg" width="50%" />
+<b>Final</b><br>
+<img src="outs/blending/dragon.png" width="50%" />
+<h3>Ocean</h3>
+<b>Original:</b><br>
+<img src="imgs/ocean-waves.jpg" width="50%" />
+<img src="imgs/ocean_island.jpg" width="50%" /><br>
+<b>Final:</b><br>
+<img src="outs/blending/ocean.png"  width="50%" />
+<h3>Wallpaper</h3>
+<b>Original:</b><br>
+<img src="imgs/wall1.jpg" width="50%" />
+<img src="imgs/wall2.jpg" width="50%" />
+<br><b>Final:</b><br>
+<img src="outs/blending/wallpaper.png" width="50%" />
+</body>
+</html>

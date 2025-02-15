@@ -1,0 +1,208 @@
+<style>
+    img {
+        width: 50%
+    }
+    .triplet * {
+        width: 33%;
+        display: inline-block;
+    }
+
+    .double * {
+        width: 49%;
+        display: inline-block;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        border-bottom: 1px  solid black;
+        border-top: 1px solid black;
+    }
+</style>
+<h1>Project 4 Part A</h1>
+
+<h2>Part 1: The Pictures</h2>
+<h3>For the Berkeley panorama:</h3>
+
+<div class="triplet">
+    <img src="imgs/berkeley_left.jpg"/>
+    <img src="imgs/berkeley_center.jpg"/>
+    <img src="imgs/berkeley_right.jpg"/>
+</div>
+
+<h3>For the Doe panorama:</h3>
+
+<div class="triplet">
+    <img src="imgs/horizontal_left.jpg"/>
+    <img src="imgs/horizontal_center.jpg"/>
+    <img src="imgs/horizontal_right.jpg"/>
+</div>
+
+<h3>For the Dubrovnik panorama:</h3>
+
+<div class="triplet">
+    <img src="imgs/dubrovnik_left.jpg"/>
+    <img src="imgs/dubrovnik_right.jpg"/>
+</div>
+
+<h3>For rectification:</h3>
+<div class="triplet">
+    <img src="imgs/split.jpg"/>
+    <img src="imgs/hallway.jpg"/>
+</div>
+
+<h2>Part 2: Recovering Homographies</h2>
+<p>I recovered the homographies with np.lstsq. The x vector we are solving for is [a, b, c, d, e, f, g, h], because
+there are 8 unknowns in a homography. The first row of the A matrix is [x1 y1 1 0 0 0 -x*x' -y*x']. The second row
+is [0 0 0 x1 y1 1 -x*y' -y*y']. (x', y') are the coordinates of the destination point, while (x, y) are the coordinates
+of the source point.</p>
+
+<h2>Part 3: Warping</h2>
+<h3>Warping for mosaics</h3>
+<p>I used backward warping with a regular grid interpolator. For the pictures within Berkeley, I am warping them to the "center"
+    image. When I warp, I first calculate where the corners of the image will go, which I then use to calculate the size that
+is needed to store the entire warped image.</p>
+
+<div class="triplet">
+    <div>Berkeley Left warped to center:</div>
+    <div>Berkeley Right warped to center:</div>
+</div>
+<div class="triplet">
+    <img src="outs/berkeley_leftwarped.jpg"/>
+    <img src="outs/berkeley_rightwarped.jpg"/>
+</div>
+
+<h3>Warping for rectification</h3>
+<p>I rectified the image from Split, Croatia, so that the back wall is flat:</p>
+<img src="outs/rectified_split.jpg"/>
+
+<p>I retified the image of the hallway to bring the tile pattern into view. Notably, the ceiling warps into the bottom
+part of the image, which I am ok with because I only want to see the pattern on the tile. I believe the ceiling warp issue
+could be fixed with a different choice of points.</p>
+
+<img src="outs/rectified_hallway.jpg"/>
+
+<h2>Part 4: Mosaic</h2>
+<p>To blend the warped images together into a mosaic, I add an opacity channel to the original images, with lower opacity
+at the corners and edges. Then, I warp the full image including opacity, and multiply the rgb values of each warped image
+by their corresponding opacity. I then sum up these modified warped images. Finally, I divide this image by the sum of the opacities,
+to create the final, blended image. Here is an example of what the opacity mask looks like on the center Berkeley image:</p>
+<img src="outs/faded.png"/>
+
+<p>Here is a mosaic of the Berkeley campus. Several people appear twice in the image, because they were walking while I took them.</p>
+
+<img src="outs/berkeley_panorama.jpg"/>
+
+<p>Here is a mosaic of Doe library. Aligning all of the text on the pages remains a challenge, but the rest of the library
+is in focus</p>
+
+<img src="outs/panorama.jpg"/>
+
+<p>Here is a mosaic of the view from the walls of Dubrovnik, Croatia. I loved watching the pirate ship sail past, so I
+    picked two shots that each had it in, so it creates the effect of a few ships sailing off. This photo is from two different
+locations on the wall, but they are close enough and the subjects are far enough away that it doesn't matter.
+The pointwise correspondences are between the island in the horizon, because the water is impossible to align to.</p>
+<img src="outs/dubrovnik_panorama.jpg"/>
+
+<h1>Project 4 Part B</h1>
+<h2>New Images</h2>
+I reused the Berkeley and Doe library images from the first part, but, for some variety, I am replacing Dubrovnik with
+pictures taken from BAIR:
+<div class="triplet">
+    <img src="imgs/bair_left.jpg"/>
+    <img src="imgs/bair_center.jpg"/>
+    <img src="imgs/bair_right.jpg"/>
+</div>
+<h2>Detecting Corner Features in an image</h2>
+<p>I used the Harris detector sample code to detect points in each image. Because detecting corners requires a significant
+amount of memory, I had to downsize the images for this part. Here are the detected Harris corners for each center image:</p>
+<div class="triplet">
+    <img src="outs/part2/harris_corners_horizontal.png"/>
+    <img src="outs/part2/harris_corners_berkeley_center.png"/>
+    <img src="outs/part2/harris_corners_bair_center.png"/>
+</div>
+
+<h2>Adaptive Non-Maximal Suppression</h2>
+<p>I use adaptive Non-Maximal Suppression to reduce the number of Harris corners to 500, while keeping a good spread of
+potential points accross each image. My implementation first finds, for each Harris corner (x, y), the distance from the corner
+to the closest corner (x', y') where h(x', y') > .9*h(x, y). Then, I take the top 500 corners for whom this value is the largest.
+This finds points that are both prominently corners and well spaced out.</p>
+
+<p>Here are the ANMS corners overlaid each center image:</p>
+<div class="triplet">
+    <img src="outs/part2/anms_berkeley_center.png"/>
+    <img src="outs/part2/anms_horizontal.png"/>
+    <img src="outs/part2/anms_bair_center.png"/>
+</div>
+
+<h2>Feature Descriptors</h2>
+<p>To extract feature descriptors, I took a 40x40 grayscale patch around each Harris corner, and then downsampled it to
+    an 8x8 patch. Then, I bias/gain normalized each patch. Here is an example of this process for a patch from the center
+    Berkeley image:</p>
+
+<div class="triplet">
+    <img src="outs/part2/patch/step1.png"/>
+    <img src="outs/part2/patch/step2.png"/>
+    <img src="outs/part2/patch/step3.png"/>
+</div>
+
+<div class="triplet">
+    <img src="outs/part2/patch/step4.png"/>
+    <img src="outs/part2/patch/step5.png"/>
+</div>
+
+<h2>Matching Feature Descriptors</h2>
+<p>To match feature descriptors between images, I first compute the pairwise distances between every patch. Then, I pair
+the points i and j if and only if distance(i, j) < .4*distance(i, any other point). This only creates matches where it is
+very clear that these two points are more similar than any other possible pairing.</p>
+
+<p>Here are the matched points for the Left + Center and Center + Right combinations for the Berkeley images.</p>
+
+<div class="triplet">
+    <img src="outs/part2/berkeley_left_matches.png"/>
+    <img src="outs/part2/berkeley_centerleft_matches.png"/>
+</div>
+
+<div class="triplet">
+    <img src="outs/part2/berkeley_centerright_matches.png"/>
+    <img src="outs/part2/berkeley_right_matches.png"/>
+</div>
+
+<h2>Computing Homography with RANSAC</h2>
+<p>To compute the homography, I implemented the RANSAC algorithm. My algorithm has an error threshold of 5, and samples
+4 inlier points at each iteration. I run the algorithm for 1000 iterations, and take the homography with the largest
+number of inliers.</p>
+
+<p>Here are the images from BAIR warped to the center image:</p>
+<div class="triplet">
+    <img src="outs/part2/bair_left_warped.png"/>
+    <img src="imgs/bair_center.jpg"/>
+    <img src="outs/part2/bair_right_warped.png"/>
+</div>
+
+<h2>Mosaics!</h2>
+<p>Finally, I combine these into a mosaic. I do this using the same opacity blending as I did previously.</p>
+
+<div class="double">
+    <p>Hand Labeled (Part A)</p>
+    <p>Automatically Labeled (Part B)</p>
+</div>
+
+<div class="double">
+    <img src="outs/berkeley_panorama.jpg"/>
+    <img src="outs/part2/berkeley_panorama.jpg"/>
+</div>
+
+<div class="double">
+    <img src="outs/panorama.jpg"/>
+    <img src="outs/part2/horizontal_panorama.jpg"/>
+</div>
+
+<p>Finally, the BAIR panorama, which was new in this section:</p>
+<img src="outs/part2/bair_panorama.jpg"/>
+
+<h2>Learning</h2>
+<p>The most interesting thing I learned in this project was how to use the RANSAC algorithm to exclude outliers. Without RANSAC,
+my image warpings were unpredictable, but RANSAC successfully filtered through the noise. Automatic correspondences are fascinating!</p>

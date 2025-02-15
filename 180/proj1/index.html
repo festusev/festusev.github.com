@@ -1,0 +1,126 @@
+<h1>Project Overview</h1>
+<p>At the beginning of the 20th century, Russian photographer Sergei Mikhailovich Prokudin-Gorskii was convinced that
+    the future of photography was color. He took thousands of color pictures by taking three photos, one with a red filter,
+    one with a green filter, and one with a blue filter. This project combines these three negatives into the picture as
+    Gorskii saw it, aligning the channels to create a single composite image.</p>
+
+<h1>Approach</h1>
+<p>First, I separate the single image into the three sub-images, blue, green, and red, by dividing the image into three
+    even parts. Then, align the green and red channels to the blue by convolving over each image with a vertical and a horizontal
+    edge detector kernel. This kernel is constructed to be similar to a kernel that was convolved with a gaussian lowpass filter,
+    so that only the important edges are discovered. These convolved images are added together to store information about both vertical and horizontal edges.
+    Finally, the algorithm loops through a grid search space, trying each possible shift in the grid, and selecting the shift
+    which minimizes the euclidean distance between the two convolved colors. Note that I only take the euclidean distance of the images within a certain border.</p>
+<p>For tif images, I use the same approach as above, but with a recursive pyramid setup. First, the algorithm finds the
+    best offset for a small scale version of the image, then progressively refines its estimate.</p>
+<h1>Bells and Whistles</h1>
+<p>The primary bell and whistle I implemented was to apply this convolutional edge detector before I took the euclidean distance
+of two images. I implemented this after having difficulty aligning the Emir image. Here is an example of the difference between not applying this convolution, and applying this convolution.</p>
+<b>Before: No Convolution (Just Euclidean)</b><br>
+<img src="out/noconvolve_emir.jpg" style="width:50em;"/>
+<br><b>After: Convolutional Edge Detector</b><br>
+<img src="out/emir.jpg" style="width:50em;"/>
+<h1>Examples Colorized</h1>
+<h3>Cathedral</h3>
+<p>
+    G Offset: [5, 2]
+    R Offset: [12, 3]
+</p>
+<img src="out/cathedral.jpg" style="width:50em;"/>
+<h3>Church</h3>
+<p>
+    G Offset: [25, 4]
+    R Offset: [58, -4]
+</p>
+<img src="out/church.jpg" style="width:50em;"/>
+<h3>Emir</h3>
+<p>
+G Offset: [49, 24]
+R Offset: [107, 41]
+</p>
+<img src="out/emir.jpg" style="width:50em;"/>
+<h3>Harvesters</h3>
+<p>
+G Offset: [60, 18]
+R Offset: [124, 14]
+</p>
+<img src="out/harvesters.jpg" style="width:50em;"/>
+<h3>Icon</h3>
+<p>
+    G Offset: [41, 17]
+    R Offset: [90, 23]
+</p>
+<img src="out/icon.jpg" style="width:50em;"/>
+<h3>Lady</h3>
+<p>
+    G Offset: [56, 9]
+    R Offset: [119, 13]
+</p>
+<img src="out/lady.jpg" style="width:50em;"/>
+<h3>Melons</h3>
+<p>
+    G Offset: [80, 10]
+    R Offset: [177, 13]
+</p>
+<img src="out/melons.jpg" style="width:50em;"/>
+<h3>Monastery</h3>
+<p>
+    G Offset: [-3, 2]
+    R Offset: [3, 2]
+</p>
+<img src="out/monastery.jpg" style="width:50em;"/>
+<h3>Onion Church</h3>
+<p>
+    G Offset: [51, 27]
+    R Offset: [107, 35]
+</p>
+<img src="out/onion_church.jpg" style="width:50em;"/>
+<h3>Sculpture</h3>
+<p>
+    G Offset: [33, -10]
+    R Offset: [140, -26]
+</p>
+<img src="out/sculpture.jpg" style="width:50em;"/>
+<h3>Self Portrait</h3>
+<p>
+G Offset: [79, 30]
+R Offset: [176, 37]
+    </p>
+<img src="out/self_portrait.jpg" style="width:50em;"/>
+<h3>Three Generations</h3>
+<p>
+    G Offset: [53, 12]
+    R Offset: [111, 8]
+</p>
+<img src="out/three_generations.jpg" style="width:50em;"/>
+<h3>Tobolsk</h3>
+<p>
+    G Offset: [3, 3]
+    R Offset: [6, 3]
+</p>
+<img src="out/tobolsk.jpg" style="width:50em;"/>
+<h3>Train</h3>
+<p>
+    G Offset: [42, 2]
+    R Offset: [85, 29]
+</p>
+<img src="out/train.jpg" style="width:50em;"/>
+<h1>Extra Examples Chosen from the Website</h1>
+<h3>Arch</h3>
+<p>
+    G Offset: [47, 19]
+    R Offset: [109, 35]
+</p>
+<img src="out/arch.jpg" style="width:50em;"/>
+<h3>Sacks</h3>
+<p>
+    G Offset: [53, 27]
+    R Offset: [126, 19]
+</p>
+<img src="out/sacks.jpg" style="width:50em;"/>
+<h3>Statue</h3>
+<p>
+    G Offset: [21, 27]
+    R Offset: [110, 53]
+</p>
+<img src="out/statue.jpg" style="width:50em;"/>
