@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evan Ellis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="imgs/BAIR_Logo2.png">
     <style>
         body {
@@ -92,9 +94,10 @@
             border-bottom: 1px solid #eee;
             display: flex;
         }
+
         .contact a {
             flex: 1;
-            text-align:center;
+            text-align: center;
         }
 
         .contact a img {
@@ -112,29 +115,46 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <img src="imgs/headshot.jpg" alt="Your Name" class="profile-image">
         <div class="bio">
             <h1>Evan Ellis</h1>
-<!--            <p>AI Safety Researcher</p>-->
-            <p>I'm a senior at UC Berkeley in Professor Anca Dragan's lab.
-                I'm currently interested in aligning agents with empowerment, not rewards.
-                Previously, I worked on code generation, active learning, regularizing reward learning, and quantum optics.
+            <!--            <p>AI Safety Researcher</p>-->
+            <p>I'm a master's student at UC Berkeley advised by Professor Anca Dragan.
+                I'm currently interested in aligning coding agents with empowerment, not rewards.
+                Previously, I worked on active learning, regularizing reward learning, and quantum
+                optics.
                 I've been fortunate to intern at Scale AI, Imbue AI, BAIR, and Salesforce.</p>
         </div>
 
     </header>
 
     <div class="contact">
-        <a href="mailto:evan.ellis@berkeley.edu"><img src="imgs/Gmail_Icon.png"/>Email</a>
-        <a href="https://scholar.google.com/citations?user=zZfgIZ4AAAAJ&hl=en"><img src="imgs/Google_Scholar_logo.svg"/>Google Scholar</a>
-        <a href="https://x.com/evandavidellis"><img src="imgs/twitter.png"/>Twitter</a>
-        <a href="https://www.linkedin.com/in/evan-ellis-cs/"><img src="imgs/LI-In-Bug.png"/>LinkedIn</a>
+        <a href="mailto:evan.ellis@berkeley.edu"><img src="imgs/Gmail_Icon.png" />Email</a>
+        <a href="https://scholar.google.com/citations?user=zZfgIZ4AAAAJ&hl=en"><img
+                src="imgs/Google_Scholar_logo.svg" />Google Scholar</a>
+        <a href="https://x.com/evandavidellis"><img src="imgs/twitter.png" />Twitter</a>
+        <a href="https://www.linkedin.com/in/evan-ellis-cs/"><img src="imgs/LI-In-Bug.png" />LinkedIn</a>
     </div>
     <section class="papers">
         <h2>Publications</h2>
-
+        <div class="paper">
+            <img src="imgs/emp_llms_overview.svg" alt="Paper 1 Visual" class="paper-image">
+            <div class="paper-content">
+                <div class="paper-title">Training LLM Agents to Empower Humans</div>
+                <div class="paper-authors">Evan Ellis, Vivek Myers, Jens Tuyls, Sergey Levine, Anca Dragan, Benjamin
+                    Eysenbach</div>
+                <div class="paper-conference">Preprint, 2025</div>
+                <div class="read-more">
+                    <img src="imgs/globe.svg" /><a href="https://empowerment-for-llms.github.io/">Website</a>
+                    <img src="imgs/cap.svg" /><a href="https://arxiv.org/abs/2510.13709">Paper</a>
+                    <img src="imgs/github-mark.png"><a
+                        href="https://github.com/festusev/codegen_empowerment/tree/main">GitHub</a>
+                </div>
+            </div>
+        </div>
         <div class="paper">
             <img src="imgs/wheelchair-cropped.svg" alt="Paper 1 Visual" class="paper-image">
             <div class="paper-content">
@@ -144,21 +164,22 @@
                 <div class="paper-authors">Vivek Myers, Evan Ellis, Sergey Levine, Benjamin Eysenbach, Anca Dragan</div>
                 <div class="paper-conference">Conference on Neural Information Processing Systems (NeurIPS), 2024</div>
                 <div class="read-more">
-                    <img src="imgs/globe.svg"/><a href="https://empowering-humans.github.io/">Website</a>
-                    <img src="imgs/cap.svg"/><a href="https://arxiv.org/pdf/2411.02623?">Paper</a>
-                    <img src="imgs/github-mark.png"><a href="https://github.com/vivekmyers/empowerment_successor_representations">GitHub</a>
+                    <img src="imgs/globe.svg" /><a href="https://empowering-humans.github.io/">Website</a>
+                    <img src="imgs/cap.svg" /><a href="https://arxiv.org/pdf/2411.02623?">Paper</a>
+                    <img src="imgs/github-mark.png"><a
+                        href="https://github.com/vivekmyers/empowerment_successor_representations">GitHub</a>
                 </div>
                 <!--                <div class="paper-abstract">-->
-<!--                    Assistive agents should make humans’ lives easier. We build upon prior work that studies-->
-<!--                    assistance through the lens of empowerment: an assistive agent aims to maximize-->
-<!--                    the influence of the human’s actions such that they exert a greater control over the-->
-<!--                    environmental outcomes and can solve tasks in fewer steps. We lift the major limitation of prior work in this area — scalability to high-dimensional settings — with-->
-<!--                    contrastive successor representations. Empirically, our proposed method outperforms-->
-<!--                    prior methods on synthetic benchmarks, and scales to Overcooked, a cooperative-->
-<!--                    game setting. Theoretically, our work connects ideas from information theory,-->
-<!--                    neuroscience, and reinforcement learning, and charts a path for representations to-->
-<!--                    play a critical role in solving assistive problems.-->
-<!--                </div>-->
+                <!--                    Assistive agents should make humans’ lives easier. We build upon prior work that studies-->
+                <!--                    assistance through the lens of empowerment: an assistive agent aims to maximize-->
+                <!--                    the influence of the human’s actions such that they exert a greater control over the-->
+                <!--                    environmental outcomes and can solve tasks in fewer steps. We lift the major limitation of prior work in this area — scalability to high-dimensional settings — with-->
+                <!--                    contrastive successor representations. Empirically, our proposed method outperforms-->
+                <!--                    prior methods on synthetic benchmarks, and scales to Overcooked, a cooperative-->
+                <!--                    game setting. Theoretically, our work connects ideas from information theory,-->
+                <!--                    neuroscience, and reinforcement learning, and charts a path for representations to-->
+                <!--                    play a critical role in solving assistive problems.-->
+                <!--                </div>-->
             </div>
         </div>
 
@@ -166,33 +187,33 @@
             <img src="imgs/posterior_reward_belief.png" alt="Paper 2 Visual" class="paper-image">
             <div class="paper-content">
                 <div class="paper-title">
-                   A Generalized Acquisition Function for Preference-based Reward Learning</a>
+                    A Generalized Acquisition Function for Preference-based Reward Learning</a>
                 </div>
                 <div class="paper-authors">Evan Ellis, Gaurav R Ghosal, Stuart J Russell, Anca Dragan, Erdem Bıyık</div>
                 <div class="paper-conference">International Conference on Robotics and Automation (ICRA), 2024</div>
                 <div class="read-more">
-                    <img src="imgs/cap.svg"/><a href="https://arxiv.org/pdf/2403.06003">Paper</a>
+                    <img src="imgs/cap.svg" /><a href="https://arxiv.org/pdf/2403.06003">Paper</a>
                 </div>
-<!--                <div class="paper-abstract">-->
-<!--                    Preference-based reward learning is a popular-->
-<!--technique for teaching robots and autonomous systems how a-->
-<!--human user wants them to perform a task. Previous works-->
-<!--have shown that actively synthesizing preference queries to-->
-<!--maximize information gain about the reward function parameters improves data efficiency. The information gain criterion-->
-<!--focuses on precisely identifying all parameters of the reward-->
-<!--function. This can potentially be wasteful as many parameters-->
-<!--may result in the same reward, and many rewards may result-->
-<!--in the same behavior in the downstream tasks. Instead, we-->
-<!--show that it is possible to optimize for learning the reward-->
-<!--function up to a behavioral equivalence class, such as inducing-->
-<!--the same ranking over behaviors, distribution over choices, or-->
-<!--other related definitions of what makes two rewards similar.-->
-<!--We introduce a tractable framework that can capture such-->
-<!--definitions of similarity. Our experiments in a synthetic environment, an assistive robotics environment with domain transfer,-->
-<!--and a natural language processing problem with real datasets-->
-<!--demonstrate the superior performance of our querying method-->
-<!--over the state-of-the-art information gain method.-->
-<!--                </div>-->
+                <!--                <div class="paper-abstract">-->
+                <!--                    Preference-based reward learning is a popular-->
+                <!--technique for teaching robots and autonomous systems how a-->
+                <!--human user wants them to perform a task. Previous works-->
+                <!--have shown that actively synthesizing preference queries to-->
+                <!--maximize information gain about the reward function parameters improves data efficiency. The information gain criterion-->
+                <!--focuses on precisely identifying all parameters of the reward-->
+                <!--function. This can potentially be wasteful as many parameters-->
+                <!--may result in the same reward, and many rewards may result-->
+                <!--in the same behavior in the downstream tasks. Instead, we-->
+                <!--show that it is possible to optimize for learning the reward-->
+                <!--function up to a behavioral equivalence class, such as inducing-->
+                <!--the same ranking over behaviors, distribution over choices, or-->
+                <!--other related definitions of what makes two rewards similar.-->
+                <!--We introduce a tractable framework that can capture such-->
+                <!--definitions of similarity. Our experiments in a synthetic environment, an assistive robotics environment with domain transfer,-->
+                <!--and a natural language processing problem with real datasets-->
+                <!--demonstrate the superior performance of our querying method-->
+                <!--over the state-of-the-art information gain method.-->
+                <!--                </div>-->
             </div>
         </div>
         <div class="paper">
@@ -202,118 +223,122 @@
                     The virtual quantum optics laboratory</a>
                 </div>
                 <div class="paper-authors">Brian R La Cour, Maria Maynard, Parth Shroff, Gabriel Ko, Evan Ellis</div>
-                <div class="paper-conference"><b>Best Paper</b>, IEEE International Conference on Quantum Computing and Engineering (QCE), 2022</div>
+                <div class="paper-conference"><b>Best Paper</b>, IEEE International Conference on Quantum Computing and
+                    Engineering (QCE), 2022</div>
                 <div class="read-more">
-                    <img src="imgs/cap.svg"/><a href="https://arxiv.org/pdf/2105.07300">Paper</a>
+                    <img src="imgs/cap.svg" /><a href="https://arxiv.org/pdf/2105.07300">Paper</a>
                 </div>
-<!--                <div class="paper-abstract">-->
-<!--                    We present a web-based software tool, the-->
-<!--Virtual Quantum Optics Laboratory (VQOL),-->
-<!--that may be used for designing and executing-->
-<!--realistic simulations of quantum optics experiments. A graphical user interface allows one to-->
-<!--rapidly build and configure a variety of different optical experiments, while the runtime environment provides unique capabilities for visualization and analysis. All standard linear optical components are available as well as sources-->
-<!--of thermal, coherent, and entangled Gaussian-->
-<!--states. A unique aspect of VQOL is the introduction of non-Gaussian measurements using detectors modeled as deterministic devices-->
-<!--that “click” when the amplitude of the light-->
-<!--falls above a given threshold. We describe the-->
-<!--underlying theoretical models and provide several illustrative examples. We find that VQOL-->
-<!--provides a a faithful representation of many-->
-<!--experimental quantum optics phenomena and-->
-<!--may serve as both a useful instructional tool-->
-<!--for students as well as a valuable research tool-->
-<!--for practitioners.-->
-<!--                </div>-->
+                <!--                <div class="paper-abstract">-->
+                <!--                    We present a web-based software tool, the-->
+                <!--Virtual Quantum Optics Laboratory (VQOL),-->
+                <!--that may be used for designing and executing-->
+                <!--realistic simulations of quantum optics experiments. A graphical user interface allows one to-->
+                <!--rapidly build and configure a variety of different optical experiments, while the runtime environment provides unique capabilities for visualization and analysis. All standard linear optical components are available as well as sources-->
+                <!--of thermal, coherent, and entangled Gaussian-->
+                <!--states. A unique aspect of VQOL is the introduction of non-Gaussian measurements using detectors modeled as deterministic devices-->
+                <!--that “click” when the amplitude of the light-->
+                <!--falls above a given threshold. We describe the-->
+                <!--underlying theoretical models and provide several illustrative examples. We find that VQOL-->
+                <!--provides a a faithful representation of many-->
+                <!--experimental quantum optics phenomena and-->
+                <!--may serve as both a useful instructional tool-->
+                <!--for students as well as a valuable research tool-->
+                <!--for practitioners.-->
+                <!--                </div>-->
             </div>
         </div>
     </section>
     <section class="papers projects">
         <h2>Projects</h2>
         <div class="paper">
-            <img src="imgs/agent_societies.png" class="paper-image"/>
+            <img src="imgs/agent_societies.png" class="paper-image" />
             <div class="paper-content">
                 <div class="paper-title">
                     Forecasting with Societies of Agents
                 </div>
-                <div class="paper-authors">Nathaniel Li*, Yury Orlovskiy*, Evan Ellis*, Anish Kachinthaya*, Harbani Jaggi*, Haokun Zheng*</div>
+                <div class="paper-authors">Nathaniel Li*, Yury Orlovskiy*, Evan Ellis*, Anish Kachinthaya*, Harbani
+                    Jaggi*, Haokun Zheng*</div>
                 <div class="read-more">
-                    <img src="imgs/cap.svg"/><a href="pdfs/agent_societies.pdf">Paper</a>
+                    <img src="imgs/cap.svg" /><a href="pdfs/agent_societies.pdf">Paper</a>
                     <img src="imgs/github-mark.png"><a href="https://github.com/festusev/AgentSocieties">GitHub</a>
                 </div>
             </div>
         </div>
         <div class="paper">
-            <img src="imgs/hoop_drone.png" class="paper-image"/>
+            <img src="imgs/hoop_drone.png" class="paper-image" />
             <div class="paper-content">
                 <div class="paper-title">
                     Hoop-Passing Drone
                 </div>
                 <div class="paper-authors">Yoga Satwik Chappidi*, Nitin Vegesna*, Evan Ellis*, Aryan Jain*</div>
                 <div class="read-more">
-                    <img src="imgs/globe.svg"/><a href="https://hooppassingdrone.github.io/hoop-passing-drone/">Website</a>
+                    <img src="imgs/globe.svg" /><a
+                        href="https://hooppassingdrone.github.io/hoop-passing-drone/">Website</a>
                     <img src="imgs/github-mark.png"><a href="https://github.com/festusev/HulaHoopDrone">GitHub</a>
                 </div>
             </div>
         </div>
         <div class="paper">
-            <img src="180/proj5/outs/movie.gif" class="paper-image"/>
+            <img src="180/proj5/outs/movie.gif" class="paper-image" />
             <div class="paper-content">
                 <div class="paper-title">
                     Neural Radiance Fields
                 </div>
                 <div class="paper-authors">Evan Ellis</div>
                 <div class="read-more">
-                    <img src="imgs/globe.svg"/><a href="180/proj5/index.html">Website</a>
+                    <img src="imgs/globe.svg" /><a href="180/proj5/index.html">Website</a>
                 </div>
             </div>
         </div>
         <div class="paper">
-            <img src="180/proj4/outs/dubrovnik_panorama.jpg" class="paper-image"/>
+            <img src="180/proj4/outs/dubrovnik_panorama.jpg" class="paper-image" />
             <div class="paper-content">
                 <div class="paper-title">
                     Panoramas
                 </div>
                 <div class="paper-authors">Evan Ellis</div>
                 <div class="read-more">
-                    <img src="imgs/globe.svg"/><a href="180/proj4/index.html">Website</a>
+                    <img src="imgs/globe.svg" /><a href="180/proj4/index.html">Website</a>
                 </div>
             </div>
         </div>
         <div class="paper">
-            <img src="180/proj3/gifs/bill_murray_evan_closedmouth.gif" class="paper-image"/>
+            <img src="180/proj3/gifs/bill_murray_evan_closedmouth.gif" class="paper-image" />
             <div class="paper-content">
                 <div class="paper-title">
                     Face Morphing
                 </div>
                 <div class="paper-authors">Evan Ellis</div>
                 <div class="read-more">
-                    <img src="imgs/globe.svg"/><a href="180/proj3/index.html">Website</a>
+                    <img src="imgs/globe.svg" /><a href="180/proj3/index.html">Website</a>
                 </div>
             </div>
         </div>
         <div class="paper">
-            <img src="180/proj2/outs/blending/oraple/oraple.png" class="paper-image"/>
+            <img src="180/proj2/outs/blending/oraple/oraple.png" class="paper-image" />
             <div class="paper-content">
                 <div class="paper-title">
                     Blending and Mixing
                 </div>
                 <div class="paper-authors">Evan Ellis</div>
                 <div class="read-more">
-                    <img src="imgs/globe.svg"/><a href="180/proj2/index.html">Website</a>
+                    <img src="imgs/globe.svg" /><a href="180/proj2/index.html">Website</a>
                 </div>
             </div>
         </div>
         <div class="paper">
-            <img src="180/proj1/out/emir.jpg" class="paper-image"/>
+            <img src="180/proj1/out/emir.jpg" class="paper-image" />
             <div class="paper-content">
                 <div class="paper-title">
                     Color Channel Alignment
                 </div>
                 <div class="paper-authors">Evan Ellis</div>
                 <div class="read-more">
-                    <img src="imgs/globe.svg"/><a href="180/proj1/index.html">Website</a>
+                    <img src="imgs/globe.svg" /><a href="180/proj1/index.html">Website</a>
                 </div>
             </div>
         </div>
     </section>
 </body>
+
 </html>
